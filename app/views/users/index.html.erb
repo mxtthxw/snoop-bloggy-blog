@@ -1,0 +1,8 @@
+<h1 class="userlist_header">All of these wonderful people are using Bloggy Blog:</h1>
+
+<% @users.each do |user| %>
+
+	<%= link_to user.username, user_path(user) %>
+	<br>
+
+<% end %>

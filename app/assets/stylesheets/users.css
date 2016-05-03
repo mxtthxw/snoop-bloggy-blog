@@ -1,0 +1,13 @@
+.banner {
+	margin: 0 auto;
+	margin-bottom: 30px;
+	font-size: 90px;
+	color: blue;
+	font-family: "Menlo";
+	font-style: italic;
+}
+
+.username {
+	font-size: 40px;
+	color: red;
+}
