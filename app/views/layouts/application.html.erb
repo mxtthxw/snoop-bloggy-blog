@@ -4,11 +4,23 @@
   <title>BloggyBlogApp</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <!-- ^ this line is giving an error with the .coffee script files: SyntaxError: [stdin]:3:19: reserved word 'function' -->
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<h1 class="banner">Bloggy Blog</h1>
+Sign In:
+<%= form_for @user do |f| %>
+<%=f.label "Username" %>
+<%=f.text_field :username %><br>
+<%=f.label "Password" %>
+<%=f.password_field :password %><br>
+<%=f.submit %>
+<% end %>
+
+<div class="banner-box">
+	<h1 class="banner"><a href="/posts">Snoop Bloggy Blog</a></h1>
+</div>
 
 <%= yield %>
 

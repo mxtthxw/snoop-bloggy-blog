@@ -13,3 +13,37 @@
  *= require_tree .
  *= require_self
  */
+
+ .banner-box {
+ 	width: 1000px;
+ 	height: 150px;
+ 	border: 10px dotted black;
+ 	margin: 0 auto;
+ 	margin-bottom: 30px;
+ 	background-color: pink;
+ }
+
+ .banner {
+	margin: 0 auto;
+	margin-bottom: 30px;
+	font-size: 90px;
+	color: blue;
+	font-family: "Menlo";
+	font-style: italic;
+	text-align: center;
+	padding: 20px;
+}
+
+.banner a {
+	text-decoration: none;
+	color: blue;
+}
+
+/*.banner a:link a:visited a:hover a:active {
+	text-decoration: none;
+}*/
+
+.subheader {
+	font-size: 25px;
+	font-family: "Menlo";
+}

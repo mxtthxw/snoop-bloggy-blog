@@ -1,2 +1,12 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<h1 class="subheader">Feeling Bloggy? Blog about it:</h1>
+
+<%= form_for @post do |f| %>
+<%=f.label "Bloggy Title" %>
+<%=f.text_field :title %><br><br>
+<%=f.label "Bloggy Body" %>
+<%=f.text_area :body, size: "100x10" %><br><br>
+<%=f.label "Bloggy Tags" %>
+<%=f.text_field :post_tags_id %>
+<%=f.hidden_field :user_id, :value => @user.id %>
+<%=f.submit %>
+<% end %>

@@ -1,2 +1,10 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div class="post-title"><%= @post.title %></div>
+
+	<%= @post.body %><br>
+	By: <span class="signature"><%= link_to @user.username, user_path(@user), :style=>'text-decoration: none; color: blue' %></span><br>
+
+<hr>
+
+<%= link_to "Return to the Bloggy Blog Feed", posts_path %>
+
+<!-- button to add comment or preexisting comment field -->

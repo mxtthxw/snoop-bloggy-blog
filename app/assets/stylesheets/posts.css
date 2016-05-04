@@ -1,0 +1,18 @@
+.post-title {
+	font-size: 30px;
+	color: red;
+	font-family: "Iowan Old Style";
+	text-decoration: none;
+	letter-spacing: 3px;
+}
+
+.post-title a {
+	text-decoration: none;
+	color: red;
+}
+
+.signature {
+	font-size: 20px;
+	color: blue;
+	font-family: "Bradley Hand", cursive;
+}

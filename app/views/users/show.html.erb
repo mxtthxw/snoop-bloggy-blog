@@ -6,7 +6,23 @@ Name: <%= @user.firstname %> <%= @user.lastname %><br>
 Email: <%= @user.email %><br>
 Age: <%= @user.age %><br>
 
+<%= link_to "Click Here to Bloggy Blog", new_post_path %>
+
 <hr>
 
-<%= link_to "Return to Users List", users_path %>
+<div class="subheader">My Bloggy Blogs:</div>
+
+<% @posts.each do |post| %>
+
+	<div class="username"><%= post.title %></div><br>
+	<%= post.body %><br><br>
+	<!-- <div class="post-tag"><%= post.post_tags_id %></div><br> -->
+	<span class="post-date">Posted: <%= post.created_at %></span><br><br>
+
+<% end %>
+
+<hr>
+
+<%= link_to "Return to Users List", users_path %><br>
+<%= link_to "DELETE YOUR ACCOUNT FOREVER", user_path(@user.id), method: :delete %>
 

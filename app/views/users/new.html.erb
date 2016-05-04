@@ -1,15 +1,17 @@
-<%= form_for User.new do |f| %>
-<%=f.label :username %>
-<%=f.text_field :username %>
-<%=f.label :password %>
-<%=f.text_field :password %>
-<%=f.label :email %>
-<%=f.text_field :email %>
-<%=f.label :firstname %>
-<%=f.text_field :firstname %>
-<%=f.label :lastname %>
-<%=f.text_field :lastname %>
-<%=f.label :age %>
-<%=f.text_field :age %>
+<h1 class="subheader">Welcome, intrepid blogger-person!  Please tell us things:</h1>
+
+<%= form_for @user do |f| %>
+<%=f.label "Pick a username" %>
+<%=f.text_field :username %><br>
+<%=f.label "Password" %>
+<%=f.password_field :password %><br>
+<%=f.label "Email" %>
+<%=f.text_field :email %><br>
+<%=f.label "First Name" %>
+<%=f.text_field :firstname %><br>
+<%=f.label "Last Name" %>
+<%=f.text_field :lastname %><br>
+<%=f.label "Age" %>
+<%=f.number_field :age %><br>
 <%=f.submit %>
 <% end %>
