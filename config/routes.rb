@@ -1,18 +1,22 @@
 Rails.application.routes.draw do
 
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
+
   root "posts#index"
 
-  resources :logins, only: [:create, :new, :destroy]
+  # resources :logins, only: [:create, :new, :destroy]
 
   resources :users
 
   resources :posts do
 
-    resources :comments, only: [:create, :destroy]
-
     resources :tags, only: [:create, :destroy]
 
   end
+
+  resources :comments, only: [:create, :destroy]
 
   get "posts/create" => "posts#new"
 

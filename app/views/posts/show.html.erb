@@ -1,10 +1,56 @@
 <div class="post-title"><%= @post.title %></div>
 
-	<%= @post.body %><br>
+	<p class="post-body"><%= @post.body %></p>
+	<br>
 	By: <span class="signature"><%= link_to @user.username, user_path(@user), :style=>'text-decoration: none; color: blue' %></span><br>
+
+	<hr>
+
+<h3>Comments:</h3>
+
+		<!-- Feed of all current comments, chronological -->
+
+<% @comments.each do |comment| %>
+
+	<%= comment.body %><br>
+	By  
+		<% if comment.user %>
+			<span class="signature"><%= link_to comment.user.username, user_path(comment.user), :style=>'text-decoration: none; color: blue' %></span>
+			<br>
+		<% else %>
+			<span class="signature">User Deleted</span>
+			<br>
+		<% end %> 
+		<span class="post-date">Posted: <%= comment.created_at %></span><br><br>
+	<hr>
+
+<% end %>
+
+<!-- form for new comments -->
+
+<% if logged_in? && @post.comments_on %>
+
+<%= form_for @comment do |f| %>
+<%=f.label "Comment:" %>
+<%=f.text_field :body %>
+<br>
+<br>
+<%=f.hidden_field :user_id, :value => @current_user.id %>
+<%=f.hidden_field :post_id, :value => @post.id %>
+<%=f.submit %>
+<% end %>
 
 <hr>
 
-<%= link_to "Return to the Bloggy Blog Feed", posts_path %>
+<% else %>
+<% end %>
 
-<!-- button to add comment or preexisting comment field -->
+<!-- links -->
+<% if logged_in? && @user.id == @current_user.id %>
+<%= link_to "Edit This Post", edit_post_path(@post) %>
+<% else %>
+<% end %>
+<br>
+<%= link_to "Blog About Something", new_post_path %>
+<br>
+<%= link_to "Return to the Bloggy Blog Feed", posts_path %>

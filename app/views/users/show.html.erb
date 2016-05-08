@@ -14,7 +14,7 @@ Age: <%= @user.age %><br>
 
 <% @posts.each do |post| %>
 
-	<div class="username"><%= post.title %></div><br>
+	<div class="post-title"><%= link_to post.title, post_path(post), :style=>'text-decoration: none; color: red' %></div><br>
 	<%= post.body %><br><br>
 	<!-- <div class="post-tag"><%= post.post_tags_id %></div><br> -->
 	<span class="post-date">Posted: <%= post.created_at %></span><br><br>
@@ -23,6 +23,12 @@ Age: <%= @user.age %><br>
 
 <hr>
 
-<%= link_to "Return to Users List", users_path %><br>
+<%= link_to "Return to Users List", users_path %>
+<br>
+<%= link_to "Check Out the Bloggy Blog Feed", posts_path %>
+<br>
+<% if logged_in? && @user.id == @current_user.id %>
 <%= link_to "DELETE YOUR ACCOUNT FOREVER", user_path(@user.id), method: :delete %>
+<% else %>
+<% end %>
 

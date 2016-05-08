@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>BloggyBlogApp</title>
+  <title>Snoop Bloggy Blog</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <!-- ^ this line is giving an error with the .coffee script files: SyntaxError: [stdin]:3:19: reserved word 'function' -->
@@ -9,13 +9,19 @@
 </head>
 <body>
 
-Sign In:
-<%= form_for @user do |f| %>
-<%=f.label "Username" %>
-<%=f.text_field :username %><br>
-<%=f.label "Password" %>
-<%=f.password_field :password %><br>
-<%=f.submit %>
+<% if logged_in? %>
+  <h3>You're signed in as <span class="signature"><%= link_to @current_user.username, user_path(@current_user), :style=>'text-decoration: none; color: blue' %></span></h3>
+	<%= link_to "Sign Out", logout_path, method: :delete %>
+<% else %>
+	Sign In:
+	<%= form_for :session, url: login_path do |f| %>
+	<%=f.label "Username" %>
+	<%=f.text_field :username %><br>
+	<%=f.label "Password" %>
+	<%=f.password_field :password %><br>
+	<%=f.submit "Sign In" %>
+	<% end %><br>
+	<%= link_to "Click Here to Sign Up", new_user_path %><br>
 <% end %>
 
 <div class="banner-box">

@@ -1,12 +1,28 @@
+<% if logged_in? %>
+
 <h1 class="subheader">Feeling Bloggy? Blog about it:</h1>
 
 <%= form_for @post do |f| %>
 <%=f.label "Bloggy Title" %>
-<%=f.text_field :title %><br><br>
+<%=f.text_field :title %>
+<br>
+<br>
 <%=f.label "Bloggy Body" %>
-<%=f.text_area :body, size: "100x10" %><br><br>
+<%=f.text_area :body, size: "100x10" %>
+<br>
+<br>
 <%=f.label "Bloggy Tags" %>
 <%=f.text_field :post_tags_id %>
-<%=f.hidden_field :user_id, :value => @user.id %>
+<%=f.label "Allow comments?" %>
+<%=f.check_box :comments_on, :checked => true %>
+<br>
+<br>
+<%=f.hidden_field :user_id, :value => @current_user.id %>
 <%=f.submit %>
+<% end %>
+
+<% else %>
+
+<h1 class="subheader">Whoa there -- you need to sign in first!</h1>
+
 <% end %>

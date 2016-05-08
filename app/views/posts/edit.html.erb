@@ -1,2 +1,17 @@
-<h1>Posts#edit</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
+<h1 class="subheader">Edit Your Post:</h1>
+
+<%= form_for @post do |f| %>
+<%=f.label "Bloggy Title" %>
+<%=f.text_field :title %><br><br>
+<%=f.label "Bloggy Body" %>
+<%=f.text_area :body, size: "100x10" %><br><br>
+<%=f.label "Bloggy Tags" %>
+<%=f.text_field :post_tags_id %>
+<%=f.hidden_field :user_id, :value => @post.user.id %>
+<%=f.submit %>
+<% end %>
+
+<%= button_to "Delete This Post", post_path(@post), method: :delete %><br>
+
+<%= link_to "Return to Post", post_path(@post) %><br>
+<%= link_to "Return to the Bloggy Blog Feed", posts_path %>
