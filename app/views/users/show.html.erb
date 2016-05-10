@@ -6,6 +6,8 @@ Name: <%= @user.firstname %> <%= @user.lastname %><br>
 Email: <%= @user.email %><br>
 Age: <%= @user.age %><br>
 
+<%= link_to "Edit Your Profile", edit_user_path %>
+<br>
 <%= link_to "Click Here to Bloggy Blog", new_post_path %>
 
 <hr>

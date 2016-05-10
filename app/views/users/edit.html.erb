@@ -1,2 +1,20 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h1 class="subheader">Edit Your User Info:</h1>
+
+<div class="username"><%= @user.username %></div>
+<%= form_for @user do |f| %>
+<%=f.label "Password" %>
+<%=f.password_field :password %><br>
+<%=f.label "Email" %>
+<%=f.text_field :email %><br>
+<%=f.label "First Name" %>
+<%=f.text_field :firstname %><br>
+<%=f.label "Last Name" %>
+<%=f.text_field :lastname %><br>
+<%=f.label "Age" %>
+<%=f.number_field :age %><br>
+<%=f.submit %>
+<% end %>
+
+<%= button_to "DELETE YOUR ACCOUNT FOREVER", user_path(@user), method: :delete %>
+<br>
+<%= link_to "Return to Profile", user_path(@user) %>
