@@ -21,7 +21,13 @@
 			<span class="signature">User Deleted</span>
 			<br>
 		<% end %> 
-		<span class="post-date">Posted: <%= comment.created_at %></span><br><br>
+		<span class="post-date">Posted: <%= comment.created_at %></span>
+		<br>
+		<br>
+		<% if comment.user == current_user %>
+			<%= link_to "Delete Comment", comment_path(comment), method: :delete %>
+		<% else %>
+		<% end %>
 	<hr>
 
 <% end %>
