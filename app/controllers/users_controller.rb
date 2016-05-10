@@ -13,7 +13,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-      # username: params[:user][:username], password: params[:user][:password], email: params[:user][:email], firstname: params[:user][:firstname], lastname: params[:user][:lastname], age: params[:user][:age]
     @user.save
     if @user.save
       log_in @user
@@ -22,7 +21,6 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
-    # redirect_to user_path(@user.id)
   end
 
   def new
@@ -40,10 +38,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    # @user = User.find(params[:id])
-    user = User.find(79)
-    # ^ temporary hardcoding
-    user.destroy
+    @user = User.find(params[:id])
+    @user.destroy
     redirect_to posts_path
   end
 
