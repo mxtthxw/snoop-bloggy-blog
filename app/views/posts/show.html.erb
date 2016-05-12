@@ -9,28 +9,30 @@
 <h3>Comments:</h3>
 
 		<!-- Feed of all current comments, chronological -->
-
-<% @comments.each do |comment| %>
-
-	<%= comment.body %><br>
-	By  
-		<% if comment.user %>
-			<span class="signature"><%= link_to comment.user.username, user_path(comment.user), :style=>'text-decoration: none; color: blue' %></span>
+<div class="comment-list">
+	<% @comments.each do |comment| %>
+		<div class="comment">
+			<%= comment.body %>
 			<br>
-		<% else %>
-			<span class="signature">User Deleted</span>
-			<br>
-		<% end %> 
-		<span class="post-date">Posted: <%= comment.created_at %></span>
-		<br>
-		<br>
-		<% if comment.user == current_user %>
-			<%= link_to "Delete Comment", comment_path(comment), method: :delete %>
-		<% else %>
-		<% end %>
-	<hr>
-
-<% end %>
+			By  
+				<% if comment.user %>
+					<span class="signature"><%= link_to comment.user.username, user_path(comment.user), :style=>'text-decoration: none; color: blue' %></span>
+					<br>
+				<% else %>
+					<span class="signature">User Deleted</span>
+					<br>
+				<% end %> 
+				<span class="post-date">Posted: <%= comment.created_at %></span>
+				<br>
+				<br>
+				<% if comment.user == current_user %>
+					<%= link_to "Delete Comment", comment_path(comment), method: :delete, remote: true, class: "delete-comment" %>
+				<% else %>
+				<% end %>
+			<hr>
+		</div>
+	<% end %>
+</div>
 
 <!-- form for new comments -->
 
